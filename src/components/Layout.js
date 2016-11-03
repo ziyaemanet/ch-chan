@@ -19,5 +19,5 @@ export default function Layout(props) {
 }
 
 Layout.PropTypes = {
-  clildren: PropTypes.object, //eslint-disable-line
+  children: PropTypes.object, //eslint-disable-line
 };
