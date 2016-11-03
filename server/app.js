@@ -1,23 +1,23 @@
 // CONSTANTS
 const PORT = process.env.PORT || 8000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/test';
+// const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/test';
 
 // REQUIRES
 const bodyParser = require('body-parser');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 // INITIALIZE SERVER
 const app = express();
 const server = require('http').createServer(app);
 
 // MONGOOSE CONFIG
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, (err) => {
-  console.log(err || `MongoDB connected to ${MONGODB_URI}`);
-});
+// mongoose.Promise = Promise;
+// mongoose.connect(MONGODB_URI, (err) => {
+//   console.log(err || `MongoDB connected to ${MONGODB_URI}`);
+// });
 
 // MIDDLEWARE
 app.use(morgan('dev'));
