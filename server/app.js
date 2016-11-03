@@ -1,6 +1,6 @@
 // CONSTANTS
 const PORT = process.env.PORT || 8000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/test';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://imagethreadsdb001/';
 
 // REQUIRES
 const bodyParser = require('body-parser');
@@ -28,6 +28,14 @@ require('./config/webpack')(app);
 
 // ROUTES
 app.use('/api', require('./routes/api'));
+
+// ALLOW REACT ROUTING
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
+// ERROR HANDLING
+
 
 // START LISTENING
 server.listen(PORT, (err) => {
