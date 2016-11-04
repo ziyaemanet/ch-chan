@@ -9,6 +9,7 @@ class ThreadPage extends Component {
     super();
     this.submitForm = this.submitForm.bind(this);
     this.addQuote = this.addQuote.bind(this);
+    this.autoGrow = this.autoGrow.bind(this);
   }
 
   componentWillMount() {
@@ -36,16 +37,19 @@ class ThreadPage extends Component {
     }
   }
 
+  autoGrow(e) {
+    e.target.style.height = "5px";
+    e.target.style.height = (e.target.scrollHeight)+"px";
+}
+
   parseText(text) {
-    console.log('text:', text);
-    console.log('text.split():', text.split(' '));
     text = text.replace(/\n/g,'\n ');
     return text.split(' ').map(word => {
       const cleanWord = word.replace(/\n/g, '');
       if (cleanWord[0] === '>' && cleanWord[1] === '>') {
         return <a href={'#' + cleanWord.substr(2)}>{word}</a>;
       }
-      return word;
+      return word + ' ' ;
     });
   }
 
@@ -62,7 +66,7 @@ class ThreadPage extends Component {
       <div>
         <form onSubmit={this.submitForm}>
           <input type="text" placeholder='Add Picture url' ref='picUrl' />
-          <textarea type="text" placeholder='Add Message' ref='message' />
+          <textarea onKeyUp={this.autoGrow} type="text" placeholder='Add Message' ref='message' />
           <button className='btn btn-default btn-sm'>Create Message</button>
         </form>
         <hr />

@@ -33,6 +33,8 @@ input, textarea {
   line-height: 1.5em;
   margin: 1em auto;
   border: 1px solid rgb(153,136,238);
+  resize: vertical;
+  overflow: auto;
 }
 
 
