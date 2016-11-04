@@ -25,7 +25,7 @@ class InputForm extends Component {
         {/* <input type="text" placeholder='Enter Title' ref='threadTitle' /> */}
         <input type="text" placeholder='Add Picture url' ref='picUrl' />
         <textarea type="text" placeholder='First Message' ref='firstMessage' />
-        <button className='btn btn-primary'>Create Thread</button>
+        <button className='btn btn-default btn-sm'>Create Thread</button>
       </form>
     );
   }

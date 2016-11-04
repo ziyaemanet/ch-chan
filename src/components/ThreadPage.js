@@ -35,31 +35,31 @@ class ThreadPage extends Component {
       messages = [];
     }
     return (
-      <div className="container">
+      <div>
         <form onSubmit={this.submitForm}>
           <input type="text" placeholder='Add Picture url' ref='picUrl' />
           <textarea type="text" placeholder='Add Message' ref='message' />
-          <button className='btn btn-primary'>Create Message</button>
+          <button className='btn btn-default btn-sm'>Create Message</button>
         </form>
         <hr />
 
         {messages.map(message => (
-          <div key={message._id} className="panel panel-default">
-            <div className="panel-heading">
-              Anonymous&nbsp;{message.timestamp}
+          <div key={message._id} className="threadContainer">
+            <div>
+              <span className='ano'>Anonymous</span>&nbsp;{message.timestamp}
             </div>
-            <div className="panel-body">
+            <div >
               <img className='threadImage' src={message.image} style={{"max-height":"300px"}}/>
               <p>{message.message}</p>
             </div>
           </div>
         ))}
 
-        <div className="panel panel-default">
-          <div className="panel-heading">
-            Anonymous&nbsp;{thread.timestamp}
+        <div className="threadContainer">
+          <div >
+            <span className='ano'>Anonymous</span>&nbsp;{thread.timestamp}
           </div>
-          <div className="panel-body">
+          <div >
             <img className='threadImage' src={thread.image} style={{"max-height":"300px"}}/>
             <p>{thread.firstMessage}</p>
           </div>
