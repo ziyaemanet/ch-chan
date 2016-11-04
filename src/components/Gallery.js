@@ -13,19 +13,17 @@ class Gallery extends Component {
   }
 
 
-
-  render (){
-    console.log('this:', this);
+  render () {
     let { threads } = this.props;
     return (
-      <div>
+      <div className='galleryContainer'>
         {
           threads.map((thread) => {
             return (
-              <div key={thread._id} onClick={() => browserHistory.push(`/thread/${thread._id}`)}>
-                <h2>{thread.name}</h2>
+              <div key={thread._id} onClick={() => browserHistory.push(`/thread/${thread._id}`)} className='card' >
+                {/* <h2>{thread.name}</h2> */}
                 <img src={thread.image} alt=""/>
-                <h4>{thread.firstMessage}</h4>
+                <p>{thread.firstMessage}</p>
               </div>
             )
           })

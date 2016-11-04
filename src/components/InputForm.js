@@ -21,8 +21,8 @@ class InputForm extends Component {
 
   render (){
     return (
-      <form onSubmit={this.submitForm}>
-        <input type="text" placeholder='Enter Title' ref='threadTitle' />
+      <form onSubmit={this.submitForm} >
+        {/* <input type="text" placeholder='Enter Title' ref='threadTitle' /> */}
         <input type="text" placeholder='Add Picture url' ref='picUrl' />
         <textarea type="text" placeholder='First Message' ref='firstMessage' />
         <button className='btn btn-primary'>Create Thread</button>

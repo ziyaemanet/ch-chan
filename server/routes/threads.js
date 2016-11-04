@@ -27,7 +27,6 @@ router.route('/:id')
    })
 
    .post((req, res) => {
-     console.log('req.body:', req.body);
      let messageId;
      Message.create(req.body)
      .then((message) => {

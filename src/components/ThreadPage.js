@@ -49,9 +49,8 @@ class ThreadPage extends Component {
               Anonymous&nbsp;{message.timestamp}
             </div>
             <div className="panel-body">
-              <img src={message.image} style={{"max-height":"200px"}}/>
-              <br />
-              {message.message}
+              <img className='threadImage' src={message.image} style={{"max-height":"300px"}}/>
+              <p>{message.message}</p>
             </div>
           </div>
         ))}
@@ -61,9 +60,8 @@ class ThreadPage extends Component {
             Anonymous&nbsp;{thread.timestamp}
           </div>
           <div className="panel-body">
-            <img src={thread.image} style={{"max-height":"200px"}}/>
-            <br />
-            {thread.firstMessage}
+            <img className='threadImage' src={thread.image} style={{"max-height":"300px"}}/>
+            <p>{thread.firstMessage}</p>
           </div>
         </div>
       </div>
