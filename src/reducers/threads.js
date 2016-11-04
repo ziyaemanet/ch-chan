@@ -1,8 +1,12 @@
 export default function (state = [], action) {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
 
-    case 'WHATEVER':
-      return [...state, action.payload];
+    case 'ADD_THREAD_FULFILLED':
+      return payload.data;
+
+    case 'GET_THREADS_FULFILLED':
+      return payload.data;
 
     default:
       return state;

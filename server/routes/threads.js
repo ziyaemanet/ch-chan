@@ -12,7 +12,8 @@ router.route('/')
   })
 
   .post((req, res) => {
-    Thread.create(req.body.thread)
+    console.log('req.body:', req.body);
+    Thread.create(req.body)
     .then(thread => Thread.find({}))
     .then(allThreads => res.send(allThreads))
     .catch(err => res.status(400).send(err));

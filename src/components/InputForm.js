@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addThread, getThreads } from '../actions/ThreadActions';
 
 class InputForm extends Component {
   constructor() {
@@ -15,8 +16,7 @@ class InputForm extends Component {
       image: picUrl.value,
       firstMessage: firstMessage.value,
     }
-    // I consoled this out until we can hook it up for backend
-    // this.props.createThread(threadPackage);
+    this.props.createThread(threadPackage);
   }
 
   render (){
@@ -33,7 +33,11 @@ class InputForm extends Component {
 
 const mapDispatchToProps = dispatch => ({
   createThread(threadPackage) {
-    dispatch(createThread(threadPackage));
+    dispatch(addThread(threadPackage));
+  },
+
+  getThreads() {
+    dispatch(getThreads());
   },
 
 });
