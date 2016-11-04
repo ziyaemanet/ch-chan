@@ -12,7 +12,6 @@ router.route('/')
   })
 
   .post((req, res) => {
-    console.log('req.body:', req.body);
     Thread.create(req.body)
     .then(thread => Thread.find({}))
     .then(allThreads => res.send(allThreads))
@@ -28,14 +27,19 @@ router.route('/:id')
    })
 
    .post((req, res) => {
-     Message.create(req.body.message)
+     console.log('req.body:', req.body);
+     let messageId;
+     Message.create(req.body)
      .then((message) => {
-       const newIdArr = req.body.idArr;
-       newIdArr.push(message._id);
-       return Thread.findByIdAndUpdate(req.params.id, { $set: { messages: newIdArr } });
+       messageId = message._id;
+       return Thread.findById(req.params.id);
      })
-     .then(() => Thread.find({}))
-     .then(allThreads => res.send(allThreads))
+     .then((thread) => {
+       thread.messages.push(messageId);
+       return thread.save();
+     })
+     .then(() => Thread.findById(req.params.id).populate('messages'))
+     .then(thread => res.send(thread))
      .catch(err => res.status(400).send(err));
    });
 

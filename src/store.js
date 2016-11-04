@@ -10,12 +10,12 @@ let middlewares = [
   promise()
 ];
 
-const store = createStore(rootReducer, loadState(), composeWithDevTools(
+const store = createStore(rootReducer, {}, composeWithDevTools(
   applyMiddleware(...middlewares)
 ));
 
-store.subscribe(() => {
-  saveState(store.getState());
-});
+// store.subscribe(() => {
+//   saveState(store.getState());
+// });
 
 export default store;

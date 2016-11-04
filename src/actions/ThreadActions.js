@@ -19,6 +19,20 @@ export function getThreads() {
   };
 }
 
+export function getMessages(id) {
+  return {
+    type: 'GET_MESSAGES',
+    payload: axios.get(`/api/threads/${id}`),
+  };
+}
+
+export function addMessage(id, message) {
+  return {
+    type: 'ADD_MESSAGE',
+    payload: axios.post(`/api/threads/${id}`, message),
+  };
+}
+
 export function sortName() {
   return {
     type: 'BY_NAME',

@@ -5,7 +5,7 @@ const threadSchema = new mongoose.Schema({
   timestamp: { type: Date, default: Date.now() },
   image: { type: String },
   firstMessage: { type: String },
-  messages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Message' }],
+  messages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'messages' }],
 });
 
 const Thread = mongoose.model('Thread', threadSchema);
