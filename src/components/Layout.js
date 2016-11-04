@@ -7,7 +7,7 @@ export default function Layout(props) {
     <div>
       <Segment inverted>
         <Menu inverted secondary className="navBar">
-          <Menu.Item header>CH-Chan</Menu.Item>
+          <Menu.Item header>ch-chan</Menu.Item>
           <Menu.Menu position="right">
             <Link to="/"><Menu.Item name="home" active={true} /></Link>
           </Menu.Menu>

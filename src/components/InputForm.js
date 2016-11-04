@@ -12,7 +12,7 @@ class InputForm extends Component {
     e.preventDefault();
     const { picUrl, threadTitle, firstMessage } = this.refs;
     let threadPackage = {
-      name: threadTitle.value,
+      // name: threadTitle.value,
       image: picUrl.value,
       firstMessage: firstMessage.value,
     }
