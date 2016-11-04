@@ -28,7 +28,7 @@ form {
 input, textarea {
   display: block;
   width:80%;
-  text-align: center;
+  text-align: left;
   font-size: 1.1em;
   line-height: 1.5em;
   margin: 1em auto;
@@ -39,6 +39,7 @@ input, textarea {
 img {
   width: 100%;
   max-width:10em;
+  max-height: 300px;
 }
 
 .card {
@@ -56,10 +57,18 @@ img {
 }
 
 p {
-  margin-top:0.5em;
   text-align: left;
   white-space: pre-wrap;
   overflow: hidden;
+}
+
+.galleryImage {
+  margin-bottom: 0.5em;
+}
+
+.replies {
+  font-size: 9pt;
+  font-weight: bold;
 }
 
 .threadContainer {
@@ -68,6 +77,8 @@ text-align: left;
 margin: 0.2em 0;
 background-color:rgb(214,218,240);
 padding:1em;
+border-bottom: 1px solid #b7c5d9;
+border-right: 1px solid #b7c5d9;
 }
 
 .ano {

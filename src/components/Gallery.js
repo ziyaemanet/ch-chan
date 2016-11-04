@@ -22,7 +22,9 @@ class Gallery extends Component {
             return (
               <div key={thread._id} onClick={() => browserHistory.push(`/thread/${thread._id}`)} className='card' >
                 {/* <h2>{thread.name}</h2> */}
-                <img src={thread.image} alt=""/>
+                <img className="galleryImage" src={thread.image} alt=""/>
+                <br />
+                <span className="replies">R: {thread.messages.length}</span>
                 <p>{thread.firstMessage}</p>
               </div>
             )

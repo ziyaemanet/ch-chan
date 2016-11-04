@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import * as ThreadActions from '../actions/ThreadActions';
 
@@ -7,6 +8,7 @@ class ThreadPage extends Component {
   constructor() {
     super();
     this.submitForm = this.submitForm.bind(this);
+    this.addQuote = this.addQuote.bind(this);
   }
 
   componentWillMount() {
@@ -22,6 +24,28 @@ class ThreadPage extends Component {
     addMessage(params.id, {
       image: picUrl.value,
       message: message.value,
+    });
+  }
+
+  addQuote(id) {
+    const { message } = this.refs;
+    if(message.value.length){
+      message.value += `\n>>${id} `;
+    } else {
+      message.value += `>>${id} `;
+    }
+  }
+
+  parseText(text) {
+    console.log('text:', text);
+    console.log('text.split():', text.split(' '));
+    text = text.replace(/\n/g,'\n ');
+    return text.split(' ').map(word => {
+      const cleanWord = word.replace(/\n/g, '');
+      if (cleanWord[0] === '>' && cleanWord[1] === '>') {
+        return <a href={'#' + cleanWord.substr(2)}>{word}</a>;
+      }
+      return word;
     });
   }
 
@@ -44,23 +68,30 @@ class ThreadPage extends Component {
         <hr />
 
         {messages.map(message => (
-          <div key={message._id} className="threadContainer">
+          <div id={message._id} key={message._id} className="threadContainer">
             <div>
-              <span className='ano'>Anonymous</span>&nbsp;{message.timestamp}
+              <span className='ano'>Anonymous</span>&nbsp;&nbsp;
+              {moment(message.timestamp).format('MM/DD/YYYY, h:mm:ss a')}&nbsp;
+              <a onClick={() => this.addQuote(message._id)}>No.{message._id}</a>
             </div>
             <div >
-              <img className='threadImage' src={message.image} style={{"max-height":"300px"}}/>
-              <p>{message.message}</p>
+              <img
+                className='threadImage'
+                src={message.image}
+                style={message.image.length ? {} :{display: "none"} }/>
+              <p>{this.parseText(message.message)}</p>
             </div>
           </div>
         ))}
 
-        <div className="threadContainer">
+        <div id={thread._id} className="threadContainer">
           <div >
-            <span className='ano'>Anonymous</span>&nbsp;{thread.timestamp}
+            <span className='ano'>Anonymous</span>&nbsp;&nbsp;
+            {moment(thread.timestamp).format('MM/DD/YYYY, h:mm:ss a')}&nbsp;
+            <a onClick={() => this.addQuote(thread._id)}>No.{thread._id}</a>
           </div>
           <div >
-            <img className='threadImage' src={thread.image} style={{"max-height":"300px"}}/>
+            <img className='threadImage' src={thread.image}/>
             <p>{thread.firstMessage}</p>
           </div>
         </div>
